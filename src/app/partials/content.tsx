@@ -1,0 +1,14 @@
+import { ReactNode } from "react";
+
+interface Props {
+    children: ReactNode
+}
+
+export default function Content({ children }: Props) {
+    return (
+        <>
+            {/* <h1>Content coy</h1> */}
+            {children}
+        </>
+    )
+}
