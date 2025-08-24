@@ -37,7 +37,7 @@ export default async function ArticlePage({ params }: Props) {
     if (!article) notFound()
 
     return (
-        <div className='p-16 flex flex-col gap-4'>
+        <div className='sm:p-8 lg:p-16 flex flex-col gap-4'>
             <h1 className='text-4xl font-bold font-[inte] text-center'>{article.title}</h1>
             <span className='flex justify-between items-center'>
                 {/* <h1 className='text-2xl font-medium'>{article.title}</h1> */}
