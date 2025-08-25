@@ -29,6 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ArticlePage({ params }: Props) {
+    // await new Promise(resolve => setTimeout(resolve, 200)) //Loading buatan
     const { slug } = await params
     if (!slug) notFound()
 
@@ -50,6 +51,10 @@ export default async function ArticlePage({ params }: Props) {
                 })}</p> */}
             </span>
             <ArticleContentClient content={article.content} />
+
+            <div className='mt-16'>
+                <p>{article.date}</p>
+            </div>
 
 
             {/* SEO */}

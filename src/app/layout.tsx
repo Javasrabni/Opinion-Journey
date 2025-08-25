@@ -18,6 +18,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Opinion Journey",
   description: "Membagikan berbagai opini terkait semua isu atau sebuah pendapat yang menarik untuk dibahas.",
+  icons: {
+    icon: "/OJ.png",
+    shortcut: "/OJ.png",
+    // apple: "/apple-touch-icon.png", // opsional
+  },
 };
 
 export default function RootLayout({
@@ -32,7 +37,7 @@ export default function RootLayout({
       >
         <div className="w-full h-screen flex">
           <Sidebar />
-          <div className="p-8 flex flex-col justify-between overflow-auto">
+          <div className="p-8 flex flex-col justify-between overflow-auto w-full">
             <Content>{children}</Content>
             <Footer />
           </div>
