@@ -31,11 +31,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ArticlePage({ params }: Props) {
     // await new Promise(resolve => setTimeout(resolve, 200)) //Loading buatan
     const { slug } = await params
-    if (!slug) notFound()
+    if (!slug) return notFound()
 
     const id = slug.split('-')[0]
     const article = DataArticle.find(i => i.no === id)
-    if (!article) notFound()
+    if (!article) return notFound()
 
     return (
         <div className='sm:p-8 lg:p-16 flex flex-col gap-4'>

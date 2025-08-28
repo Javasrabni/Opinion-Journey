@@ -5,8 +5,6 @@ export interface Article {
     date: string
 }
 
-
-
 export const DataArticle: Article[] = [
     {
         no: "1", title: 'Mengapa kepribadian ekstrovert cenderung lebih diuntungkan dibanding introvert?', date: '24 Agustus 2025',

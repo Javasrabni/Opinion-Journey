@@ -2,21 +2,24 @@
 
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { DataArticle } from '@/lib/articles'
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
+import { DataArticle } from '@/lib/articles'
 import { ArrowLeft, ArrowRight, ListMinus, Info } from 'lucide-react';
 
 
 const Sidebar = () => {
+    const pathname = usePathname()
+
     // Side bar 
     const [sidebarToggle, setSidebarToggle] = useState(false)
     const EventKeyPress = () => {
         setSidebarToggle(prev => !prev)
     }
     useEffect(() => {
-        const HandleKeyPress = (event: any) => {
-            if (event.key === 'Tab' || event.key === 9) {
+        const HandleKeyPress = (event: KeyboardEvent) => {
+            if (event.key === 'Tab') {
                 event.preventDefault();
                 EventKeyPress()
             }
@@ -30,8 +33,6 @@ const Sidebar = () => {
     // /////////////////////////////////
 
     // Data article 
-    
-
 
     return (
         <div className={` shadow-xl shrink-0 flex flex-col gap-4 relative  ${sidebarToggle ? ' w-[64px] py-8 px-2 items-center' : ' w-[280px] p-8'}`}>
@@ -65,7 +66,7 @@ const Sidebar = () => {
                     ) : (
                         <>
                             {DataArticle.map(i =>
-                                <Link key={i.no} href={`/article/${i.no}-${i.title.replace(/\s+/g, '-')}`} className='hover:bg-gray-100 rounded-sm  '>
+                                <Link key={i.no} href={`/article/${i.no}-${i.title.replace(/\s+/g, '-')}`} className={`hover:bg-gray-100 rounded-sm ${pathname.includes(`${i.no}-`) && 'bg-gray-100'}`}>
                                     <li>{i.title}</li>
                                 </Link>
                             )}
@@ -87,7 +88,13 @@ const Sidebar = () => {
                             </span>
                             <p className='text-xs text-justify'>Saya, Javas Anggaraksa Rabbani, mahasiswa Hukum di Universitas Sultan Ageng Tirtayasa. Tulisan di Opinion Journey hanyalah pandangan pribadi saya terhadap berbagai topik, bukan pernyataan resmi institusi atau pihak lain.</p>
                         </div><div className='flex gap-4 items-center w-full'>
-                            <img src="/untirta.png" alt="untirta logo" className='w-[32px] h-[32px] grayscale opacity-80 brightness-110 contras-125 ' />
+                            <Image
+                                src={'/untirta.png'}
+                                alt='Logo Untirta'
+                                width={32}
+                                height={32}
+                                className='grayscale opacity-80 brightness-110 contras-125'
+                            />
                             <p className='font-[newsroman] text-xs leading-4'>Universitas Sultan Ageng <br />Tirtayasa</p>
 
                         </div>
