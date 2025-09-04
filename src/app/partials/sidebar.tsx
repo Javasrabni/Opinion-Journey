@@ -60,13 +60,13 @@ const Sidebar = () => {
             <div className={` custom-scrollbar max-h-[calc(100%-260px)] h-full overflow-y-scroll`}>
                 <ul className={`flex flex-col gap-4`}>
                     {sidebarToggle ? (
-                        <div className='w-8 h-8 hover:bg-gray-100 cursor-pointer flex items-center justify-center rounded-sm' onClick={() => setSidebarToggle(prev => !prev)}>
+                        <div className='w-8 h-8 hover:bg-gray-100 cursor-pointer flex items-center justify-center rounded-lg' onClick={() => setSidebarToggle(prev => !prev)}>
                             <ListMinus className='w-4 h-4' />
                         </div>
                     ) : (
                         <>
                             {DataArticle.map(i =>
-                                <Link key={i.no} href={`/article/${i.no}-${i.title.replace(/\s+/g, '-')}`} className={`hover:bg-gray-100 rounded-sm ${pathname.includes(`${i.no}-`) && 'bg-gray-100'}`}>
+                                <Link key={i.no} href={`/article/${i.no}-${i.title.replace(/\s+/g, '-')}`} className={`hover:bg-gray-900 hover:text-white hover:p-4 rounded-lg ${pathname.includes(`${i.no}-`) && 'bg-gray-100'}`}>
                                     <li>{i.title}</li>
                                 </Link>
                             )}
@@ -76,7 +76,7 @@ const Sidebar = () => {
             </div>
             <div className={`px-8 max-w-[280px] w-full h-fit absolute left-0 bottom-8 flex flex-col gap-4 justify-center items-center`}>
                 {sidebarToggle ? (
-                    <div className='w-8 h-8 rounded-sm flex items-center justify-center hover:bg-gray-100 cursor-pointer' onClick={() => setSidebarToggle(prev => !prev)}>
+                    <div className='w-8 h-8 rounded-lg flex items-center justify-center hover:bg-gray-100 cursor-pointer' onClick={() => setSidebarToggle(prev => !prev)}>
                         <Info className='w-4 h-4' />
                     </div>
                 ) : (

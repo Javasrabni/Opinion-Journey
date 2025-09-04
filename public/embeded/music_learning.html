@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallpaper Musik untuk Pembelajaran</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .container {
+            width: 100%;
+            height: 100%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .main-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #fff, #f0f8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .evidence {
+            font-size: 16px;
+            opacity: 0.8;
+            font-style: italic;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            flex: 1;
+        }
+        
+        .left-section, .right-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            font-size: 28px;
+            color: white;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .table-container {
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            color: white;
+        }
+        
+        th, td {
+            padding: 12px 8px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        th {
+            background: rgba(255, 255, 255, 0.2);
+            font-weight: bold;
+            font-size: 16px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        tr:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.02);
+            transition: all 0.3s ease;
+        }
+        
+        .activity {
+            font-weight: bold;
+            color: #FFE4E1;
+        }
+        
+        .music-type {
+            color: #E0FFFF;
+        }
+        
+        .tempo {
+            color: #F0E68C;
+            font-weight: bold;
+        }
+        
+        .performance {
+            color: #90EE90;
+            font-weight: bold;
+        }
+        
+        .avoid-section {
+            margin-top: 20px;
+        }
+        
+        .avoid-title {
+            font-size: 22px;
+            color: #FFB6C1;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .avoid-item {
+            background: rgba(255, 100, 100, 0.1);
+            margin: 8px 0;
+            padding: 10px;
+            border-radius: 10px;
+            border-left: 4px solid #FF6B6B;
+        }
+        
+        .avoid-item strong {
+            color: #FFB6C1;
+        }
+        
+        .mechanisms {
+            margin-top: 20px;
+        }
+        
+        .mechanism-item {
+            background: rgba(100, 255, 100, 0.1);
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 10px;
+            border-left: 4px solid #4ECDC4;
+        }
+        
+        .mechanism-title {
+            color: #4ECDC4;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .mechanism-desc {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+        
+        .floating-notes {
+            position: absolute;
+            font-size: 60px;
+            color: rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+        }
+        
+        .note1 { top: 10%; left: 10%; animation: float 6s ease-in-out infinite; }
+        .note2 { top: 20%; right: 15%; animation: float 8s ease-in-out infinite reverse; }
+        .note3 { bottom: 30%; left: 5%; animation: float 7s ease-in-out infinite; }
+        .note4 { bottom: 15%; right: 10%; animation: float 5s ease-in-out infinite reverse; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            margin-top: 20px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-notes">
+        <div class="note1">♪</div>
+        <div class="note2">♫</div>
+        <div class="note3">♬</div>
+        <div class="note4">♭</div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="main-title">MUSIK UNTUK PEMBELAJARAN</h1>
+            <p class="subtitle">Panduan Berdasarkan Riset Neuropsikologi</p>
+            <p class="evidence">Meta-analysis dari 36+ studi dengan 2,465+ partisipan</p>
+        </div>
+
+        <div class="content">
+            <div class="left-section">
+                <h2 class="section-title">🎵 Jenis Musik Optimal</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Aktivitas</th>
+                                <th>Jenis Musik</th>
+                                <th>Tempo (BPM)</th>
+                                <th>Peningkatan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="activity">Matematika & Logika</td>
+                                <td class="music-type">Klasik Baroque</td>
+                                <td class="tempo">60-70</td>
+                                <td class="performance">+12-15%</td>
+                            </tr>
+                            <tr>
+                                <td class="activity">Membaca & Bahasa</td>
+                                <td class="music-type">Ambient/Tanpa</td>
+                                <td class="tempo">&lt;60</td>
+                                <td class="performance">+8-10%</td>
+                            </tr>
+                            <tr>
+                                <td class="activity">Menulis Kreatif</td>
+                                <td class="music-type">Neo-Classical</td>
+                                <td class="tempo">70-90</td>
+                                <td class="performance">+18-22%</td>
+                            </tr>
+                            <tr>
+                                <td class="activity">Menghafal</td>
+                                <td class="music-type">Nature + Minimal</td>
+                                <td class="tempo">40-60</td>
+                                <td class="performance">+25-30%</td>
+                            </tr>
+                            <tr>
+                                <td class="activity">Problem Solving</td>
+                                <td class="music-type">Binaural Beats</td>
+                                <td class="tempo">8-12Hz</td>
+                                <td class="performance">+15-20%</td>
+                            </tr>
+                            <tr>
+                                <td class="activity">Coding</td>
+                                <td class="music-type">Lo-fi Hip Hop</td>
+                                <td class="tempo">80-100</td>
+                                <td class="performance">+10-15%</td>
+                            </tr>
+                            <tr>
+                                <td class="activity">Desain Visual</td>
+                                <td class="music-type">Downtempo</td>
+                                <td class="tempo">90-110</td>
+                                <td class="performance">+20-25%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="avoid-section">
+                    <h3 class="avoid-title">❌ Hindari Saat Belajar</h3>
+                    <div class="avoid-item">
+                        <strong>Musik dengan Lirik:</strong> Mengganggu language processing (-15-25%)
+                    </div>
+                    <div class="avoid-item">
+                        <strong>Tempo Cepat (&gt;120 BPM):</strong> Overstimulation (-10-20%)
+                    </div>
+                    <div class="avoid-item">
+                        <strong>Heavy Metal/Rock:</strong> Meningkatkan stress (-20-30%)
+                    </div>
+                    <div class="avoid-item">
+                        <strong>Musik Favorit:</strong> Memicu distraksi memori (-12-18%)
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-section">
+                <h2 class="section-title">🧠 Mekanisme Neurologis</h2>
+                <div class="mechanisms">
+                    <div class="mechanism-item">
+                        <div class="mechanism-title">Brainwave Entrainment</div>
+                        <div class="mechanism-desc">Musik 60 BPM mensinkronkan gelombang alfa (8-12 Hz) untuk pembelajaran optimal. Superior temporal gyrus merespons ritme dan menyinkronkan aktivitas neural.</div>
+                    </div>
+                    
+                    <div class="mechanism-item">
+                        <div class="mechanism-title">Dopamine Pathway Activation</div>
+                        <div class="mechanism-desc">Musik instrumental meningkatkan dopamin di nucleus accumbens 6-9%, meningkatkan motivasi dan sustained attention.</div>
+                    </div>
+                    
+                    <div class="mechanism-item">
+                        <div class="mechanism-title">Cortisol Reduction</div>
+                        <div class="mechanism-desc">Musik slow tempo menurunkan kortisol 23% dalam 30 menit, mengurangi anxiety yang mengganggu working memory.</div>
+                    </div>
+                    
+                    <div class="mechanism-item">
+                        <div class="mechanism-title">Default Mode Network</div>
+                        <div class="mechanism-desc">Musik ambient mengurangi mind-wandering 15-20% dengan modulasi default mode network.</div>
+                    </div>
+                </div>
+
+                <div class="avoid-section">
+                    <h3 class="avoid-title">⚙️ Protokol Optimal</h3>
+                    <div class="mechanism-item">
+                        <div class="mechanism-title">Volume: 50-60 dB</div>
+                        <div class="mechanism-desc">Setara suara percakapan normal untuk masking noise tanpa overstimulation</div>
+                    </div>
+                    <div class="mechanism-item">
+                        <div class="mechanism-title">Durasi: Maksimal 45-50 menit</div>
+                        <div class="mechanism-desc">Mencegah habituation dan mempertahankan efektivitas</div>
+                    </div>
+                    <div class="mechanism-item">
+                        <div class="mechanism-title">Timing: Mulai 5-10 menit sebelum</div>
+                        <div class="mechanism-desc">Priming effect untuk persiapan optimal kondisi kognitif</div>
+                    </div>
+                    <div class="mechanism-item">
+                        <div class="mechanism-title">Individual Differences</div>
+                        <div class="mechanism-desc">30-40% orang belajar lebih baik dalam keheningan total</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Sumber: Rauscher et al. (Nature, 1993) | Kämpfe et al. (Psychology of Music, 2011) | Salimpoor et al. (Nature Neuroscience, 2011) | Effect size: d=0.35 (medium effect)
+        </div>
+    </div>
+</body>
+</html>

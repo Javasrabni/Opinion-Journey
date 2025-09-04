@@ -7,7 +7,6 @@ interface Props {
 export default function Content({ children }: Props) {
     return (
         <>
-            {/* <h1>Content coy</h1> */}
             {children}
         </>
     )
