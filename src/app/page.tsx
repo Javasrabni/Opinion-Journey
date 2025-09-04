@@ -6,8 +6,8 @@ export default function Home() {
     return (
         <div className="sm:p-8 lg:p-16 flex flex-col gap-8">
             <div className="flex flex-col gap-4 items-center justify-center w-full h-[60vh]">
-                <h1 className='text-4xl  font-[inte] text-center'>Selamat datang di lingkungan para akademisi.</h1>
-                <p className="text-md text-center max-w-[42rem]">Mari kita menambah kemampuan berpikir kirtis serta menambah wawasan dan pengetahuan, kami akan berbagi tentang artikel terkait penelitian dan essay opini pribadi terkait berbagai topik atau isu.</p>
+                <h1 className='text-4xl  font-[inte] text-center'>Ruang Akademik, WriteLab Academia</h1>
+                <p className="text-md text-center max-w-[42rem]">Menambah kemampuan berpikir kirtis serta menambah wawasan dan pengetahuan, kami akan berbagi tentang artikel terkait penelitian dan essay opini pribadi terkait berbagai topik atau isu.</p>
 
                 {/* Kategori */}
                 <div className="w-full h-fit flex items-center justify-center gap-4">
@@ -27,7 +27,7 @@ export default function Home() {
             <div className="mt-8 flex flex-col" >
                 <h1 className='text-xl font-bold font-[news]'>Cara Menulis Artikel</h1>
 
-                <div className="flex gap-8">
+                <div className="flex gap-8 overflow-x-scroll pb-4">
                     <Cardcomp fileSource={"/embeded/kiat-artikel/kiatArtikel.pdf"} titleCard={'Panduan Menulis Artikel Dengan Benar Berdasarkan Jenisnya.'} linkOnClick={'Buka dokumen'} shortCard={true} />
                     <Cardcomp fileSource={"/embeded/kiat-artikel/kiatArtikel.pdf"} titleCard={'Panduan Menulis Artikel Dengan Benar Berdasarkan Jenisnya.'} linkOnClick={'Buka dokumen'} shortCard={true} />
                 </div>

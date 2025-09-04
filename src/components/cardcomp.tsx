@@ -14,8 +14,8 @@ const Cardcomp = ({ Heading, fileSource, titleCard, description, linkOnClick, sh
         <div className="flex flex-col gap-8">
             <h1 className='text-xl font-bold font-[news]'>{Heading}</h1>
 
-            <div className={`${shortCard && 'flex flex-col w-full max-w-[264px]'} rounded-lg flex  gap-4 flex-wrap lg:flex-nowrap `}>
-                <div className={`${shortCard ? 'w-full max-w-[264px]' : 'lg:max-w-[40%]'} w-full  flex`}>
+            <div className={`${shortCard && 'flex flex-col w-full max-w-[264px]'} rounded-lg flex  gap-4 flex-wrap lg:flex-nowrap`}>
+                <div className={`${shortCard ? 'w-full min-w-[264px] max-w-[264px]' : 'lg:max-w-[40%]'} w-full  flex`}>
                     <iframe
                         className="rounded-lg"
                         src={fileSource}
