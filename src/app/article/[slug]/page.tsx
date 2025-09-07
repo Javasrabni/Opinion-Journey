@@ -6,11 +6,11 @@ import Script from 'next/script'
 import { Metadata } from 'next'
 
 interface Props {
-    params: Promise<{ slug: string }>
+    params: { slug: string }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const { slug } = await params
+    const { slug } = params;
 
     const id = slug.split("-")[0];
     const article = DataArticle.find((i) => i.no === id);
@@ -22,15 +22,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         };
     }
 
+    const canonicalUrl = `https://opinion-journey.vercel.app/article/${article.no}-${article.title
+        .toLowerCase()
+        .replace(/\s+/g, "-")}`;
+
     return {
         title: `${article.title} - Opinion Journey`,
-        description: article.content.replace(/\n/g, " ").slice(0, 160),
+        description: article.excerpt,
+        openGraph: {
+            title: article.title,
+            description: article.excerpt,
+            type: "article",
+            url: canonicalUrl,
+            siteName: "Opinion Journey"
+        },
+        alternates: {
+            canonical: canonicalUrl,
+        },
     };
 }
 
 export default async function ArticlePage({ params }: Props) {
     // await new Promise(resolve => setTimeout(resolve, 200)) //Loading buatan
-    const { slug } = await params
+    const { slug } = params
     if (!slug) return notFound()
 
     const id = slug.split('-')[0]
@@ -63,7 +77,7 @@ export default async function ArticlePage({ params }: Props) {
                     "@context": "https://schema.org",
                     "@type": "Article",
                     headline: article.title,
-                    description: article.content.replace(/\n/g, " ").slice(0, 160),
+                    description: article.excerpt,
                     datePublished: article.date,
                     dateModified: article.date,
                     author: {
@@ -73,16 +87,16 @@ export default async function ArticlePage({ params }: Props) {
                     publisher: {
                         "@type": "Organization",
                         name: "Opinion Journey",
-                        logo: {
-                            "@type": "ImageObject",
-                            url: "https://example.com/logo.png", // opsional tapi bagus kalau ada
-                        },
+                        // logo: {
+                        //     "@type": "ImageObject",
+                        //     url: "https://example.com/logo.png",
+                        // },
                     },
                     mainEntityOfPage: {
                         "@type": "WebPage",
-                        "@id": `https://opinionjourney.my.id/article/${article.no}-${article.title
+                        "@id": `https://opinion-journey.vercel.app/article/${article.no}-${article.title
                             .toLowerCase()
-                            .replace(/\s+/g, "-")}`, // link kanonikal
+                            .replace(/\s+/g, "-")}`,
                     },
                 })}
             </Script>
